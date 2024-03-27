@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interaction</title>
+</head>
+<body>
+    <h1>Chat with JCB(JAVA CHAT BOT)</h1>
+    
+    <div id="chat-container">
+        <div id="chat-messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value.trim();
+            if (userInput !== "") {
+                // Add user message to chat
+                var userMessage = "<p><strong>You:</strong> " + userInput + "</p>";
+                document.getElementById("chat-messages").innerHTML += userMessage;
+                
+                // Send user input to backend for processing
+                fetch('/interact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userInput: userInput })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Add bot response to chat
+                    var botMessage = "<p><strong>Bot:</strong> " + data + "</p>";
+                    document.getElementById("chat-messages").innerHTML += botMessage;
+                })
+                .catch(error => console.error('Error:', error));
+                
+                // Clear user input field
+                document.getElementById("user-input").value = "";
+            }
+        }
+    </script>
+</body>
+</html>

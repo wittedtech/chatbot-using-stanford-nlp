@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to Chatbot</h1>
+    <h2>Please select an option:</h2>
+    
+    <form action="/manual-training" method="get">
+        <button type="submit">Manual Training</button>
+    </form>
+    
+    <form action="/document-training" method="get" enctype="multipart/form-data">
+<!--        <input type="file" name="file" accept=".pdf">-->
+        <button type="submit">Document Training</button>
+    </form>
+    
+    <form action="/interact" method="get">
+        <button type="submit">Let's Chat</button>
+    </form>
+</body>
+</html>

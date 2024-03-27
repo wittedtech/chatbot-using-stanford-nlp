@@ -1,0 +1,22 @@
+api:
+  url: http://localhost:9292
+
+server:
+  port: 9292
+  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/chatbot
+    username: root
+    password: mysql24
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# Stanford CoreNLP properties
+annotators:
+  - tokenize
+  - ssplit
+  - parse
+  - sentiment

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Training Form</title>
+</head>
+<body>
+    <h1>Document Training</h1>
+    
+    <form action="/document-training" method="post" enctype="multipart/form-data">
+        <label for="pdfFile">Upload PDF File:</label>
+        <input type="file" id="pdfFile" name="file" accept=".pdf" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
